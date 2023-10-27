@@ -1,0 +1,18 @@
+version: "2.2"
+services:
+  rewards:
+    container_name: rating-system
+    build: .
+    expose:
+      - "8080"
+    env_file:
+      - ./config/dev.env
+    depends_on:
+      - mongo
+    ports:
+      - "8080:8080"
+  mongo:
+    image: mongo
+    container_name: "rating-db"
+    ports:
+      - "27017:27017"
